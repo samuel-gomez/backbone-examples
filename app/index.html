@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Backbone theatre</title>
+</head>
+<body>
+    <h1>My Theater</h1>
+    <input type="button" value="Add Item" id="butAddItem" />
+    <div id="mainContainer"></div>
+    <script type="text/template" id="tmplt-Movies">
+        <ul>
+        </ul>
+    </script>
+    <script type="text/template" id="tmplt-Movie">
+        <div>*******************************************************</div>
+        <div><%= Id %> </div>
+        <div><%= Name %> </div>
+        <div><%= AverageRating %> </div>
+        <div><%= ReleaseYear %> </div>
+        <div><%= Url %> </div>
+        <div><%= Rating %> </div>
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+    <script src="scripts/main.js" type="text/javascript"></script>   
+</body>
+</html>
