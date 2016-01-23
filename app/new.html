@@ -5,23 +5,8 @@
     <title>Backbone theatre</title>
 </head>
 <body>
-    <h1>Liste des films</h1>
-    <input type="button" value="Add Item" id="butAddItem" />
-    <div id="mainContainer"></div>
-    <script type="text/template" id="tmplt-Movies">
-        <ul>
-        </ul>
-    </script>
-    <script type="text/template" id="tmplt-Movie">
-        <div>*******************************************************</div>
-        <div><%= Id %> </div>
-        <div><%= Name %> </div>
-        <div><%= AverageRating %> </div>
-        <div><%= ReleaseYear %> </div>
-        <div><%= Url %> </div>
-        <div><%= Rating %> </div>
-    </script>
-    <script type="text/template" id="tmplt-FormMovie">
+    <h1>Nouveau film</h1>
+    <div id="newContainer">
         <form id="newFormContainer" action="">
             <label>Id : </label>
             <input type="text" name="id" id="id" value="" />
@@ -40,7 +25,7 @@
             <br/>
             <button type="submit" name="validate" class="js-newMovieValidate" >Valider</button>
         </form>
-    </script>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>

@@ -25,7 +25,7 @@
         model: Theater.Models.Movie,
         url: "scripts/data/movies.json",
         initialize: function(){
-          
+          console.log("Movies initialize");
         }
     });
 
@@ -64,7 +64,6 @@
           this.collection.each(this.addOne);
         },
         addOne: function(model){
-          console.log('add', model)
           view = new Theater.Views.Movie({ model: model });
           $("ul", this.el).append(view.render());
         }
@@ -89,46 +88,6 @@
       }
     });
 
-    Theater.Templates.formMovie = _.template($('#tmplt-FormMovie').html());
-
-    Theater.Views.NewMovie = Backbone.View.extend({
-        el: $('#mainContainer'),
-        template: Theater.Templates.formMovie,     
-        initialize: function(){
-          console.log('init',this.collection);
-          _.bindAll(this, "render","addOne","addMovie");
-          this.collection.bind("add", this.addOne);
-          this.render();
-        },
-        events: {
-          "click .js-newMovieValidate" : "addMovie"
-        },
-        addOne: function(model){
-          view = new Theater.Views.Movie({ model: model });
-          console.log('addone', this.collection)
-        },
-        addMovie: function(e){
-          e.preventDefault();          
-          var movie = new Theater.Models.Movie(
-            {
-              "Id": "nouveau",
-              "Name": "Samuel Gomez",
-              "AverageRating": 10,
-              "ReleaseYear": 2016,
-              "Url": "http://www.samuelgomez.fr",
-              "Rating": "YOYO"
-            }
-          )
-          console.log('new movie', movie)
-          this.collection.add(movie);         
-        },
-        render: function(){
-          console.log('this.collection',this.collection)
-          return $(this.el).append(this.template);
-        }
-    });
-
-
     /*
     * Création du Router, il sert à lancer l'application selon une url donnée
     * Ici la fonction 'defaultRoute' est appelée au chargement de la page pour l'url racine
@@ -139,24 +98,15 @@
     */
     Theater.Router = Backbone.Router.extend({
         routes: {
-          "": "defaultRoute",
-          "new" : "newMovie"
+          "": "defaultRoute" 
         },
       
         defaultRoute: function () {
-          Theater.movies = new Theater.Collections.Movies();
-          new Theater.Views.Movies({ collection: Theater.movies });
-          Theater.movies.fetch({reset: true});
-        },
-      
-        newMovie: function () {
-          Theater.movies = new Theater.Collections.Movies();
-          console.log(' Theater.movies', Theater.movies)            
-          new Theater.Views.NewMovie({ collection: Theater.movies });
-          Theater.movies.fetch({reset: true});
+            Theater.movies = new Theater.Collections.Movies();
+            new Theater.Views.Movies({ collection: Theater.movies });
+            Theater.movies.fetch({reset: true});
         }
     });
-
 
     /*
     * Instanciation du Router
@@ -178,6 +128,6 @@
                 "Rating": "YOYO"
             }
         )
-        console.log('Theater.movies',Theater.movies)
+      
         Theater.movies.add(movie);
     });
